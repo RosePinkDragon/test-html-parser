@@ -1,0 +1,301 @@
+[
+  {
+    "@context": "http://schema.org/",
+    "@type": "Recipe",
+    "name": "Vada Pav",
+    "author": { "@type": "Person", "name": "Dassana Amit" },
+    "description": "Vada pav is a popular and delicious Maharashtrian street food of fried batter coated potato dumplings sandwiched in a pav (soft dinner rolls), together with sweet tamarind chutney, green chutney and dry garlic chutney.",
+    "datePublished": "2021-06-05T18:05:14+00:00",
+    "image": [
+      "https://www.vegrecipesofindia.com/wp-content/uploads/2018/12/vada-pav-recipe-1a.jpg",
+      "https://www.vegrecipesofindia.com/wp-content/uploads/2018/12/vada-pav-recipe-1a-500x500.jpg",
+      "https://www.vegrecipesofindia.com/wp-content/uploads/2018/12/vada-pav-recipe-1a-500x375.jpg",
+      "https://www.vegrecipesofindia.com/wp-content/uploads/2018/12/vada-pav-recipe-1a-480x270.jpg"
+    ],
+    "recipeYield": ["8", "8 vada pav"],
+    "prepTime": "PT30M",
+    "cookTime": "PT20M",
+    "totalTime": "PT50M",
+    "recipeIngredient": [
+      "350 grams potatoes (or 2 medium to large sized potatoes)",
+      "6 to 7  garlic (- small to medium-sized)",
+      "1 to 2  green chillies",
+      "½ teaspoon mustard seeds",
+      "1 pinch asafoetida ((hing))",
+      "⅛ teaspoon turmeric powder",
+      "7 to 8  curry leaves",
+      "1 to 2 tablespoons chopped coriander leaves ((cilantro leaves))",
+      "salt (as required)",
+      "1 to 1.25 cups gram flour ((besan))",
+      "1 pinch asafoetida ((hing))",
+      "⅛ teaspoon turmeric powder",
+      "1 pinch baking soda (- optional)",
+      "½ cup water (or add as required)",
+      "salt ( as required)",
+      "1 cup chopped coriander leaves",
+      "1 to 2  garlic cloves (- small to medium-sized, chopped)",
+      "2 to 3 drops lemon juice",
+      "2 to 3  green chillies (- chopped)",
+      "salt (as required)",
+      "½ cup seedless tamarind (- tightly packed)",
+      "1.75 cups water (or add as required)",
+      "½ teaspoon cumin seeds",
+      "½ teaspoon ginger powder ((saunth powder))",
+      "1 pinch asafoetida ((hing))",
+      "¼ teaspoon red chili powder",
+      "7 to 8 tablespoons jaggery powder (or grated jaggery - add as required adjusting to your taste)",
+      "1 teaspoon oil",
+      "salt (or black salt, add as required)",
+      "oil (as required - for deep frying)",
+      "2 tablespoons dry red chutney (- optional)",
+      "8  pav (or dinner rolls)",
+      "3 to 4  fried green chillies (mixed with some salt, optional)"
+    ],
+    "recipeInstructions": [
+      {
+        "@type": "HowToSection",
+        "name": "Making green chutney",
+        "itemListElement": [
+          {
+            "@type": "HowToStep",
+            "text": "Grind all the green chutney ingredients with little water till smooth. Avoid making a watery chutney.",
+            "name": "Grind all the green chutney ingredients with little water till smooth. Avoid making a watery chutney.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-0-0"
+          }
+        ]
+      },
+      {
+        "@type": "HowToSection",
+        "name": "Making sweet chutney",
+        "itemListElement": [
+          {
+            "@type": "HowToStep",
+            "text": "Soak tamarind in hot water for 30 to 40 minutes.",
+            "name": "Soak tamarind in hot water for 30 to 40 minutes.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-1-0"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "With your hands, squeeze the pulp from the tamarind in the same bowl or pan.&nbsp;strain the pulp and keep aside.",
+            "name": "With your hands, squeeze the pulp from the tamarind in the same bowl or pan.&nbsp;strain the pulp and keep aside.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-1-1"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Heat oil in a small pan.&nbsp;lower the flame &amp; add cumin seeds and let them crackle.",
+            "name": "Heat oil in a small pan.&nbsp;lower the flame &amp; add cumin seeds and let them crackle.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-1-2"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Add ginger powder, red chili powder, asafoetida. Stir and add the strained tamarind pulp. Cook for 2-3 minutes.",
+            "name": "Add ginger powder, red chili powder, asafoetida. Stir and add the strained tamarind pulp. Cook for 2-3 minutes.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-1-3"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Add the jaggery and salt and cook for 4-5 mins more. The mixture would thicken. Let the saunth chutney mixture cool.",
+            "name": "Add the jaggery and salt and cook for 4-5 mins more. The mixture would thicken. Let the saunth chutney mixture cool.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-1-4"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "When cooled, store the saunth chutney in an air-tight dry jar or container. Refrigerate and serve the saunth chutney whenever required with chaat or snacks.",
+            "name": "When cooled, store the saunth chutney in an air-tight dry jar or container. Refrigerate and serve the saunth chutney whenever required with chaat or snacks.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-1-5"
+          }
+        ]
+      },
+      {
+        "@type": "HowToSection",
+        "name": "Making potato stuffing",
+        "itemListElement": [
+          {
+            "@type": "HowToStep",
+            "text": "Boil or steam potatoes in an Instant pot, pressure cooker or pan until they are completely cooked. Peel and then mash them with a fork in a bowl.",
+            "name": "Boil or steam potatoes in an Instant pot, pressure cooker or pan until they are completely cooked. Peel and then mash them with a fork in a bowl.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-2-0"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Crush garlic and green chillies to a semi-fine paste in a mortar-pestle.",
+            "name": "Crush garlic and green chillies to a semi-fine paste in a mortar-pestle.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-2-1"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Heat oil in a small pan. Add mustard seeds and crackle them. Then add curry leaves and asafoetida. Stir and fry for about 5 seconds.",
+            "name": "Heat oil in a small pan. Add mustard seeds and crackle them. Then add curry leaves and asafoetida. Stir and fry for about 5 seconds.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-2-2"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Then add crushed garlic and green chilies paste, which have been crushed in a mortar-pestle. Add turmeric powder. Stir for some seconds until the raw aroma of garlic goes away. Do not brown garlic.",
+            "name": "Then add crushed garlic and green chilies paste, which have been crushed in a mortar-pestle. Add turmeric powder. Stir for some seconds until the raw aroma of garlic goes away. Do not brown garlic.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-2-3"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Pour this tempering in the mashed potatoes.",
+            "name": "Pour this tempering in the mashed potatoes.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-2-4"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Add chopped coriander leaves and salt.",
+            "name": "Add chopped coriander leaves and salt.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-2-5"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Mix everything well and then make small to medium balls from the mashed potato mixture. Flatten these balls a bit. Cover and set aside.",
+            "name": "Mix everything well and then make small to medium balls from the mashed potato mixture. Flatten these balls a bit. Cover and set aside.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-2-6"
+          }
+        ]
+      },
+      {
+        "@type": "HowToSection",
+        "name": "Making batter",
+        "itemListElement": [
+          {
+            "@type": "HowToStep",
+            "text": "In another bowl, make a smooth and thick yet flowing batter from the besan, turmeric powder, asafoetida, a pinch of baking soda (optional), salt and water.",
+            "name": "In another bowl, make a smooth and thick yet flowing batter from the besan, turmeric powder, asafoetida, a pinch of baking soda (optional), salt and water.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-3-0"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "The batter should not be very thick or thin. If the batter becomes thin, add 1 or 2 tablespoons of gram flour. If the batter becomes thin, then add 1 or 2 tablespoons water. Set aside.",
+            "name": "The batter should not be very thick or thin. If the batter becomes thin, add 1 or 2 tablespoons of gram flour. If the batter becomes thin, then add 1 or 2 tablespoons water. Set aside.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-3-1"
+          }
+        ]
+      },
+      {
+        "@type": "HowToSection",
+        "name": "Frying",
+        "itemListElement": [
+          {
+            "@type": "HowToStep",
+            "text": "In a kadai or pan, heat oil for deep frying.",
+            "name": "In a kadai or pan, heat oil for deep frying.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-4-0"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "When the oil becomes medium hot, then dip the slightly flattened potato balls in the batter and coat it evenly with the batter.",
+            "name": "When the oil becomes medium hot, then dip the slightly flattened potato balls in the batter and coat it evenly with the batter.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-4-1"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Gently and carefully add these batter coated potato balls in medium hot oil.",
+            "name": "Gently and carefully add these batter coated potato balls in medium hot oil.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-4-2"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Depending on the size of the kadai or pan, you can add more or less of the vadas while frying. Don&#39;t overcrowd the pan while frying.",
+            "name": "Depending on the size of the kadai or pan, you can add more or less of the vadas while frying. Don&#39;t overcrowd the pan while frying.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-4-3"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "When one side becomes crisp, lightly golden and firms up then gently turn it over with a slotted spoon and fry the second side. Turn over when the second side is fried.",
+            "name": "When one side becomes crisp, lightly golden and firms up then gently turn it over with a slotted spoon and fry the second side. Turn over when the second side is fried.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-4-4"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "This way turning a couple of times fry the batata vada till they are evenly golden on all sides.",
+            "name": "This way turning a couple of times fry the batata vada till they are evenly golden on all sides.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-4-5"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Drain them on kitchen paper towels. Make all batata vadas this way and keep aside.",
+            "name": "Drain them on kitchen paper towels. Make all batata vadas this way and keep aside.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-4-6"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "When they are still hot or warm, you need to serve them. Take all the chutneys and pav on your work surface.",
+            "name": "When they are still hot or warm, you need to serve them. Take all the chutneys and pav on your work surface.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-4-7"
+          }
+        ]
+      },
+      {
+        "@type": "HowToSection",
+        "name": "Assembling &amp; serving",
+        "itemListElement": [
+          {
+            "@type": "HowToStep",
+            "text": "Slice the pav without breaking it into two parts and keep aside. If you don't have sweet chutney, then just make the vada pav with green chutney.",
+            "name": "Slice the pav without breaking it into two parts and keep aside. If you don't have sweet chutney, then just make the vada pav with green chutney.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-5-0"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Spread both the green chutney and sweet chutney on the sliced pav. You can also spread green chutney on one side and sweet chutney on the other side.",
+            "name": "Spread both the green chutney and sweet chutney on the sliced pav. You can also spread green chutney on one side and sweet chutney on the other side.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-5-1"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Sprinkle the dry garlic chutney. This is optional and if you don't have you can skip it.",
+            "name": "Sprinkle the dry garlic chutney. This is optional and if you don't have you can skip it.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-5-2"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Place the hot batata vada sandwiched in the bread slices.",
+            "name": "Place the hot batata vada sandwiched in the bread slices.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-5-3"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Serve vada pav immediately or else the pav becomes soggy. You can also serve some fried salted green chillies and both the chutney along with it.",
+            "name": "Serve vada pav immediately or else the pav becomes soggy. You can also serve some fried salted green chillies and both the chutney along with it.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-5-4"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "You can also serve them as an evening snack with a side of ginger chai or coffee.",
+            "name": "You can also serve them as an evening snack with a side of ginger chai or coffee.",
+            "url": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#wprm-recipe-134422-step-5-5"
+          }
+        ]
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.93",
+      "ratingCount": "39"
+    },
+    "recipeCategory": ["Snacks"],
+    "recipeCuisine": ["Indian"],
+    "suitableForDiet": ["https://schema.org/VeganDiet"],
+    "keywords": "Vada Pav",
+    "nutrition": {
+      "@type": "NutritionInformation",
+      "servingSize": "1 vada pav",
+      "calories": "296 kcal",
+      "carbohydrateContent": "47 g",
+      "proteinContent": "7 g",
+      "fatContent": "9 g",
+      "saturatedFatContent": "1 g",
+      "cholesterolContent": "1 mg",
+      "sodiumContent": "824 mg",
+      "fiberContent": "4 g",
+      "sugarContent": "19 g",
+      "unsaturatedFatContent": "2 g"
+    },
+    "@id": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#recipe",
+    "isPartOf": {
+      "@id": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#article"
+    },
+    "mainEntityOfPage": "https://www.vegrecipesofindia.com/vada-pav-how-to-make-wada-pav/#webpage"
+  }
+]
