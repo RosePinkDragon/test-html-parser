@@ -1,11 +1,25 @@
 {
   "name": "test-html-parser",
+  "type": "module",
   "version": "1.0.0",
   "description": "this is test to get data from html page",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
   "dependencies": {
     "express": "^4.17.2",
     "puppeteer": "^13.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/runtime": "^7.17.2",
+    "jest": "^27.5.1"
   }
 }
