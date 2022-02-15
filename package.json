@@ -8,11 +8,16 @@
   "scripts": {
     "test": "jest",
     "start": "node index.js",
-    "start:dev": "nodemon index.js"
+    "start:dev": "nodemon index.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
   },
   "dependencies": {
+    "babel-jest": "^27.5.1",
+    "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
-    "puppeteer": "^13.2.0"
+    "node-fetch": "^3.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",

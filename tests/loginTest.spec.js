@@ -1,4 +1,4 @@
-import datasplit from "../index.js";
+import getUrlData from "../index.js";
 import { vadaPav, vadaPavUrl } from "../samples/testOutput/testResult";
 
 test("string with a single number should result in the number itself", async () => {

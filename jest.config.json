@@ -1,10 +1,9 @@
 {
-  "collectCoverage": true,
-  "moduleFileExtensions": ["js", "mjs"],
-  "transform": {
-    "^.+\\.js$": "babel-jest",
-    "^.+\\.mjs$": "babel-jest"
+  "roots": ["<rootDir>"],
+  "testEnvironment": "node",
+  "moduleNameMapper": {
+    "^(\\.{1,2}/.*)\\.js$": "$1"
   },
-  "testRegex": "((\\.|/*.)(spec))\\.js?$",
-  "testTimeout": 16000
+  "transform": {},
+  "ignoreTransformPatterns": []
 }
