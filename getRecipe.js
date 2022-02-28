@@ -56,10 +56,10 @@ const stepsExtractor = (recipeInstructions) => {
       const innerInsArr = instruction.itemListElement.map((innerIns) => {
         return innerIns.text;
       });
-      instru[name] = innerInsArr;
+      minInstructions[name] = innerInsArr;
     }
     if (instruction["@type"] === "HowToStep") {
-      instru[name] = instruction.text;
+      minInstructions[name] = instruction.text;
     }
   });
   return minInstructions;
@@ -69,8 +69,7 @@ const getUrlData = async (req, res) => {
   try {
     const initialData = await queryExtractor(req.query.url);
     const minifiedInstructions = stepsExtractor(initialData.recipeInstructions);
-    console.log(minifiedInstructions);
-    res.send({ success: true, recipe: initialData });
+    res.send({ success: true, recipe: minifiedInstructions });
   } catch (e) {
     console.log(e.message);
     res.send({ success: false, error: e.message });
