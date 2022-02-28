@@ -27,27 +27,50 @@ const isGraphSchema = (data) => {
   return result;
 };
 
+const queryExtractor = async (url) => {
+  const html = await fetch(url).then((x) => x.text());
+  const $ = await cheerio.load(html);
+  let results;
+  var items = $('script[type="application/ld+json"]').toArray();
+  items.forEach((item) => {
+    const parsedData = JSON.parse(item.firstChild.data);
+    if (Array.isArray(parsedData)) {
+      console.log("data is array figure this out");
+      return (results = false);
+    }
+    if (isGraphSchema(parsedData)) {
+      return (results = isGraphSchema(parsedData));
+    }
+    if (isRecipeSchema(parsedData)) {
+      return (results = parsedData);
+    }
+  });
+  return results;
+};
+
+const stepsExtractor = (recipeInstructions) => {
+  let minInstructions = {};
+  recipeInstructions.forEach((instruction) => {
+    const name = instruction.name;
+    if (instruction["@type"] === "HowToSection") {
+      const innerInsArr = instruction.itemListElement.map((innerIns) => {
+        return innerIns.text;
+      });
+      instru[name] = innerInsArr;
+    }
+    if (instruction["@type"] === "HowToStep") {
+      instru[name] = instruction.text;
+    }
+  });
+  return minInstructions;
+};
+
 const getUrlData = async (req, res) => {
-  console.log("here");
   try {
-    console.log(req.query);
-    const html = await fetch(req.query.url).then((x) => x.text());
-    const $ = await cheerio.load(html);
-    let results = [];
-    var items = $('script[type="application/ld+json"]').toArray();
-    items.forEach((item) => {
-      const parsedData = JSON.parse(item.firstChild.data);
-      if (Array.isArray(parsedData)) {
-        return console.log("data is array figure this out");
-      }
-      if (isGraphSchema(parsedData)) {
-        return results.push(isGraphSchema(parsedData));
-      }
-      if (isRecipeSchema(parsedData)) {
-        return results.push(parsedData);
-      }
-    });
-    res.send({ success: true, recipe: results });
+    const initialData = await queryExtractor(req.query.url);
+    const minifiedInstructions = stepsExtractor(initialData.recipeInstructions);
+    console.log(minifiedInstructions);
+    res.send({ success: true, recipe: initialData });
   } catch (e) {
     console.log(e.message);
     res.send({ success: false, error: e.message });
