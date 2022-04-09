@@ -2,7 +2,6 @@ import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 
 const isRecipeSchema = (data) => {
-  // console.log(data);
   if (data["@type"]) {
     // check if valid
     if (Array.isArray(data["@type"])) {
@@ -35,6 +34,9 @@ const queryExtractor = async (url) => {
   items.forEach((item) => {
     const parsedData = JSON.parse(item.firstChild.data);
     if (Array.isArray(parsedData)) {
+      parsedData.forEach((data) => {
+        if (isRecipeSchema(data)) results.push(data);
+      });
       return;
     }
     if (isGraphSchema(parsedData)) {
@@ -49,7 +51,6 @@ const queryExtractor = async (url) => {
 
 const stepsExtractor = (recipeInstructions) => {
   let minInstructions = {};
-  console.log(recipeInstructions);
   recipeInstructions.forEach((instruction, idx) => {
     const name = instruction.name;
     if (instruction["@type"] === "HowToSection") {
@@ -62,7 +63,6 @@ const stepsExtractor = (recipeInstructions) => {
       return (minInstructions[name || `Step ${idx + 1}`] = instruction.text);
     }
   });
-  console.log(minInstructions);
   return minInstructions;
 };
 
@@ -72,38 +72,25 @@ const getUrlData = async (req, res) => {
     const initialData = extractedRecipes[0];
     if (!initialData) throw Error("Unable to extract Recipe");
     const minifiedInstructions = stepsExtractor(initialData.recipeInstructions);
-    const {
-      name,
-      author,
-      description,
-      image,
-      recipeYeild,
-      prepTime,
-      cookTime,
-      totalTime,
-      recipeIngredient,
-      recipeCategory,
-      recipeCuisine,
-      aggregateRating,
-      ratingCount,
-    } = initialData;
+    const recipeData = {
+      name: initialData.name,
+      author: initialData.author,
+      description: initialData.description,
+      image: initialData.image,
+      recipeYeild: initialData.recipeYeild,
+      prepTime: initialData.prepTime,
+      cookTime: initialData.cookTime,
+      totalTime: initialData.totalTime,
+      recipeIngredient: initialData.recipeIngredient,
+      recipeCategory: initialData.recipeCategory,
+      recipeCuisine: initialData.recipeCuisine,
+      aggregateRating: initialData.aggregateRating,
+      ratingCount: initialData.ratingCount,
+    };
     res.send({
       success: true,
       recipe: {
-        name,
-        author,
-        description,
-        image,
-        recipeYeild,
-        prepTime,
-        cookTime,
-        totalTime,
-        recipeIngredient,
-        recipeCategory,
-        recipeCuisine,
-        aggregateRating,
-        ratingCount,
-        minifiedInstructions,
+        ...recipeData,
       },
     });
   } catch (e) {
