@@ -27,7 +27,7 @@ app.get(HEALTH_CHECK, (_req, res) => {
   res.send({ success: true });
 });
 
-app.post("/getRecipe", requireUser, getUrlData);
+app.post("/getRecipe", getUrlData);
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
