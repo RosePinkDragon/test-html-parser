@@ -1,23 +1,34 @@
 import Recipe from "../models/recipeModel.js";
 import extractRecipes from "../utils/recipeExtracter.js";
 
-function containsUser(users, userId) {
+export const containsUser = (users, userId) => {
   for (let i = 0; i < users.length; i++) {
     if (users[i].toString() === userId) {
       return true;
     }
   }
   return false;
-}
+};
+
+export const getSingleRecipe = async (req, res) => {
+  const recipe = await Recipe.findById(req.params.id);
+  if (!recipe || recipe === null)
+    res.status(400).send({ success: false, message: "Recipe Not Found" });
+  res.status(400).send({ success: false, recipe: recipe });
+};
 
 export const getUserRecipes = async (_req, res) => {
   const recipe = await Recipe.find({ users: res.locals.user._id });
   res.status(200).send({
     success: true,
-    numberOfRecipes: recipe.length,
-    recipes: recipe,
+    recipes: {
+      numberOfRecipes: recipe.length,
+
+      recipe,
+    },
   });
 };
+
 export const addUserToRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id);
