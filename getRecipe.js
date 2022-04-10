@@ -1,7 +1,7 @@
 import cloudinary from "cloudinary";
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
-import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET } from "config.js";
+import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET } from "./config.js";
 
 const isRecipeSchema = (data) => {
   if (data["@type"]) {
