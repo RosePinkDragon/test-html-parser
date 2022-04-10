@@ -1,5 +1,7 @@
+import cloudinary from "cloudinary";
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
+import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET } from "config.js";
 
 const isRecipeSchema = (data) => {
   if (data["@type"]) {
@@ -66,12 +68,32 @@ const stepsExtractor = (recipeInstructions) => {
   return minInstructions;
 };
 
+cloudinary.config({
+  cloud_name: CLOUD_NAME,
+  api_key: CLOUD_API_KEY,
+  api_secret: CLOUD_API_SECRET,
+});
+
+const imageUploader = (images, name) => {
+  images.forEach((image, idx) => {
+    cloudinary.v2.uploader.upload(
+      image,
+      { public_id: `${name}_${idx}` },
+      function (error, result) {
+        if (error) console.log(result);
+        console.log(result);
+      }
+    );
+  });
+};
+
 const getUrlData = async (req, res) => {
   try {
     const extractedRecipes = await queryExtractor(req.query.url);
     const initialData = extractedRecipes[0];
     if (!initialData) throw Error("Unable to extract Recipe");
     const minifiedInstructions = stepsExtractor(initialData.recipeInstructions);
+    imageUploader(initialData.image, initialData.name);
     const recipeData = {
       name: initialData.name,
       author: initialData.author,
@@ -86,6 +108,7 @@ const getUrlData = async (req, res) => {
       recipeCuisine: initialData.recipeCuisine,
       aggregateRating: initialData.aggregateRating,
       ratingCount: initialData.ratingCount,
+      instructions: minifiedInstructions,
     };
     res.send({
       success: true,
@@ -94,9 +117,10 @@ const getUrlData = async (req, res) => {
       },
     });
   } catch (e) {
-    console.log(e);
-    console.log(e.message);
-    res.send({ success: false, error: e.message });
+    res.send({
+      success: false,
+      error: e.message || "Error Extracting the recipes",
+    });
   }
 };
 export default getUrlData;
