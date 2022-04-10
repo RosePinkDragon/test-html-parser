@@ -10,6 +10,14 @@ function containsUser(users, userId) {
   return false;
 }
 
+export const getUserRecipes = async (_req, res) => {
+  const recipe = await Recipe.find({ users: res.locals.user._id });
+  res.status(200).send({
+    success: true,
+    numberOfRecipes: recipe.length,
+    recipes: recipe,
+  });
+};
 export const addUserToRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id);
@@ -54,7 +62,7 @@ export const getUrlData = async (req, res) => {
       if (isRecipeAvailable) {
         await Recipe.findOneAndUpdate(
           {
-            recipeUrl: req.query.url,
+            _id: isRecipeAvailable._id,
           },
           {
             recipeUrl: req.query.url,
@@ -63,23 +71,29 @@ export const getUrlData = async (req, res) => {
           },
           { new: true }
         );
+        res.send({
+          success: true,
+          recipe: {
+            id: isRecipeAvailable._id,
+            ...isRecipeAvailable.recipe,
+          },
+        });
       } else {
-        await Recipe.create({
+        const newRecipe = await Recipe.create({
           recipeUrl: req.query.url,
           status: "SUCCESS",
           recipe: recipe.recipe,
         });
+        res.send({
+          success: true,
+          recipe: {
+            id: newRecipe._id,
+            ...newRecipe.recipe,
+          },
+        });
       }
-      res.send({
-        success: true,
-        recipe: {
-          id: recipe._id,
-          ...recipe.recipe,
-        },
-      });
     }
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
     const isAlreadyFailedRecipe = await Recipe.findOne({
       recipeUrl: req.query.url,
     });
@@ -92,7 +106,7 @@ export const getUrlData = async (req, res) => {
     }
     res.send({
       success: false,
-      error: e.message || "Error Extracting the recipes",
+      error: error.message || "Error Extracting the recipes",
     });
   }
 };

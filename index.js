@@ -15,9 +15,7 @@ mongoose
   })
   .then(() => console.log("Connected to DB"))
   .catch((err) => {
-    console.log({
-      error: err.message || "There was an error",
-    });
+    console.log(err);
   });
 
 app.use(cors());
