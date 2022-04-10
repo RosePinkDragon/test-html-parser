@@ -1,7 +1,8 @@
 import cloudinary from "cloudinary";
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
-import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET } from "./config.js";
+
+import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET } from "../config.js";
 
 const isRecipeSchema = (data) => {
   if (data["@type"]) {
@@ -68,33 +69,37 @@ const stepsExtractor = (recipeInstructions) => {
   return minInstructions;
 };
 
-cloudinary.config({
-  cloud_name: CLOUD_NAME,
-  api_key: CLOUD_API_KEY,
-  api_secret: CLOUD_API_SECRET,
-});
+// cloudinary.config({
+//   cloud_name: CLOUD_NAME,
+//   api_key: CLOUD_API_KEY,
+//   api_secret: CLOUD_API_SECRET,
+// });
 
-const imageUploader = (images, name) => {
-  images.forEach((image, idx) => {
-    cloudinary.v2.uploader.upload(
-      image,
-      { public_id: `${name}_${idx}` },
-      function (error, result) {
-        if (error) console.log(result);
-        console.log(result);
-      }
-    );
-  });
-};
+// const imageUploader = (images, name) => {
+//   images.forEach((image, idx) => {
+//     cloudinary.v2.uploader.upload(
+//       image,
+//       { public_id: `${name}_${idx}` },
+//       function (error, result) {
+//         if (error) console.log(result);
+//         console.log(result);
+//       }
+//     );
+//   });
+// };
 
-const getUrlData = async (req, res) => {
+const extractRecipes = async (recipeUrl) => {
+  const recipe = {
+    error: true,
+    recipe: false,
+  };
   try {
-    const extractedRecipes = await queryExtractor(req.query.url);
+    const extractedRecipes = await queryExtractor(recipeUrl);
     const initialData = extractedRecipes[0];
     if (!initialData) throw Error("Unable to extract Recipe");
     const minifiedInstructions = stepsExtractor(initialData.recipeInstructions);
-    imageUploader(initialData.image, initialData.name);
-    const recipeData = {
+    // imageUploader(initialData.image, initialData.name);
+    recipe.recipe = {
       name: initialData.name,
       author: initialData.author,
       description: initialData.description,
@@ -110,17 +115,12 @@ const getUrlData = async (req, res) => {
       ratingCount: initialData.ratingCount,
       instructions: minifiedInstructions,
     };
-    res.send({
-      success: true,
-      recipe: {
-        ...recipeData,
-      },
-    });
-  } catch (e) {
-    res.send({
-      success: false,
-      error: e.message || "Error Extracting the recipes",
-    });
+    recipe.error = false;
+    return recipe;
+  } catch (error) {
+    recipe.error = error.message || "Unable to extract Recipe";
+    return recipe;
   }
 };
-export default getUrlData;
+
+export default extractRecipes;

@@ -1,9 +1,10 @@
 import express from "express";
-import { PORT, MONGO_URL, HEALTH_CHECK } from "./config.js";
-import getUrlData from "./getRecipe.js";
 import cors from "cors";
 import mongoose from "mongoose";
+
+import recipeRoutes from "./routes/recipeRoutes.js";
 import { requireUser } from "./middleware/checkUser.js";
+import { PORT, MONGO_URL, HEALTH_CHECK } from "./config.js";
 
 const app = express();
 
@@ -14,9 +15,7 @@ mongoose
   })
   .then(() => console.log("Connected to DB"))
   .catch((err) => {
-    console.log({
-      error: err.message || "There was an error",
-    });
+    console.log(err);
   });
 
 app.use(cors());
@@ -27,7 +26,7 @@ app.get(HEALTH_CHECK, (_req, res) => {
   res.send({ success: true });
 });
 
-app.post("/getRecipe", getUrlData);
+app.use("/recipe", requireUser, recipeRoutes);
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
