@@ -10,6 +10,20 @@ export const containsUser = (users, userId) => {
   return false;
 };
 
+export const getAllRecipes = async (_req, res) => {
+  const recipe = await Recipe.find({ status: "SUCCESS" });
+  console.log(recipe);
+  if (!recipe || recipe === null)
+    res.status(400).send({ success: false, message: "Recipe Not Found" });
+  res.status(200).send({
+    success: true,
+    recipes: {
+      numberOfRecipes: recipe.length,
+      recipe,
+    },
+  });
+};
+
 export const getSingleRecipe = async (req, res) => {
   const recipe = await Recipe.findById(req.params.id);
   if (!recipe || recipe === null)
