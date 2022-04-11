@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo "${params.Greeting} World!"
+                echo "👋 ${params.Greeting} 🌍!"
             }
         }
     }
