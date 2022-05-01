@@ -1,17 +1,14 @@
-import cloudinary from "cloudinary";
-import fetch from "node-fetch";
-import * as cheerio from "cheerio";
-
-import { CLOUD_NAME, CLOUD_API_KEY, CLOUD_API_SECRET } from "../config.js";
+import * as cheerio from 'cheerio';
+import { RecipeInterface } from '@server/controllers/recipe';
 
 const isRecipeSchema = (data) => {
-  if (data["@type"]) {
+  if (data['@type']) {
     // check if valid
-    if (Array.isArray(data["@type"])) {
+    if (Array.isArray(data['@type'])) {
       //check if array
-      if (data["@type"].includes("Recipes")) return true;
-      if (data["@type"].includes("recipes")) return true;
-    } else if (data["@type"].toLowerCase() === "recipe") {
+      if (data['@type'].includes('Recipes')) return true;
+      if (data['@type'].includes('recipes')) return true;
+    } else if (data['@type'].toLowerCase() === 'recipe') {
       // check if recipe
       return true;
     }
@@ -21,8 +18,8 @@ const isRecipeSchema = (data) => {
 
 const isGraphSchema = (data) => {
   let result = false;
-  if (data["@graph"]) {
-    data["@graph"].forEach((element) => {
+  if (data['@graph']) {
+    data['@graph'].forEach((element) => {
       if (isRecipeSchema(element)) result = element;
     });
   }
@@ -30,17 +27,19 @@ const isGraphSchema = (data) => {
 };
 
 const queryExtractor = async (url) => {
+  // import fetch from 'node-fetch';
+  const { default: fetch } = await import('node-fetch');
   const html = await fetch(url).then((x) => x.text());
   const $ = cheerio.load(html);
-  let results = [];
-  var items = $('script[type="application/ld+json"]').toArray();
+  const results = [];
+  const items = $('script[type="application/ld+json"]').toArray();
   items.forEach((item) => {
-    const parsedData = JSON.parse(item.firstChild.data);
+    // console.log(JSON.parse(item.firstChild.data));
+    const parsedData = JSON.parse(item.firstChild as any).data;
     if (Array.isArray(parsedData)) {
-      parsedData.forEach((data) => {
+      return parsedData.forEach((data) => {
         if (isRecipeSchema(data)) results.push(data);
       });
-      return;
     }
     if (isGraphSchema(parsedData)) {
       return results.push(isGraphSchema(parsedData));
@@ -53,53 +52,52 @@ const queryExtractor = async (url) => {
 };
 
 const stepsExtractor = (recipeInstructions) => {
-  let minInstructions = {};
+  const minInstructions = {};
   recipeInstructions.forEach((instruction, idx) => {
     const name = instruction.name;
-    if (instruction["@type"] === "HowToSection") {
+    if (instruction['@type'] === 'HowToSection') {
       const innerInsArr = instruction.itemListElement.map((innerIns) => {
         return innerIns.text;
       });
       return (minInstructions[name] = innerInsArr);
     }
-    if (instruction["@type"] === "HowToStep") {
+    if (instruction['@type'] === 'HowToStep') {
       return (minInstructions[name || `Step ${idx + 1}`] = instruction.text);
     }
   });
   return minInstructions;
 };
 
-// cloudinary.config({
-//   cloud_name: CLOUD_NAME,
-//   api_key: CLOUD_API_KEY,
-//   api_secret: CLOUD_API_SECRET,
-// });
-
-// const imageUploader = (images, name) => {
-//   images.forEach((image, idx) => {
-//     cloudinary.v2.uploader.upload(
-//       image,
-//       { public_id: `${name}_${idx}` },
-//       function (error, result) {
-//         if (error) console.log(result);
-//         console.log(result);
-//       }
-//     );
-//   });
-// };
-
-const extractRecipes = async (recipeUrl) => {
-  const recipe = {
+const extractRecipes = async (recipeUrl: string): Promise<RecipeInterface> => {
+  const recipeData: RecipeInterface = {
     error: true,
-    recipe: false,
+    recipe: {
+      name: '',
+      author: '',
+      description: '',
+      image: [],
+      recipeYeild: '',
+      prepTime: '',
+      cookTime: '',
+      totalTime: '',
+      recipeIngredients: [],
+      recipeCategory: '',
+      recipeCuisine: '',
+      aggregateRating: {
+        ratingCount: '',
+        ratingValue: '',
+      },
+      ratingCount: '',
+      instructions: {},
+    },
   };
   try {
     const extractedRecipes = await queryExtractor(recipeUrl);
     const initialData = extractedRecipes[0];
-    if (!initialData) throw Error("Unable to extract Recipe");
+    if (!initialData) throw Error('Unable to extract Recipe');
     const minifiedInstructions = stepsExtractor(initialData.recipeInstructions);
     // imageUploader(initialData.image, initialData.name);
-    recipe.recipe = {
+    recipeData.recipe = {
       name: initialData.name,
       author: initialData.author,
       description: initialData.description,
@@ -108,18 +106,17 @@ const extractRecipes = async (recipeUrl) => {
       prepTime: initialData.prepTime,
       cookTime: initialData.cookTime,
       totalTime: initialData.totalTime,
-      recipeIngredient: initialData.recipeIngredient,
+      recipeIngredients: initialData.recipeIngredient,
       recipeCategory: initialData.recipeCategory,
       recipeCuisine: initialData.recipeCuisine,
       aggregateRating: initialData.aggregateRating,
       ratingCount: initialData.ratingCount,
       instructions: minifiedInstructions,
     };
-    recipe.error = false;
-    return recipe;
-  } catch (error) {
-    recipe.error = error.message || "Unable to extract Recipe";
-    return recipe;
+    recipeData.error = false;
+    return recipeData;
+  } catch (error: unknown) {
+    return recipeData;
   }
 };
 
